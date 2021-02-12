@@ -46,6 +46,16 @@ public class Model implements ObservableModel {
     }
 
     @Override
+    public void registerObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void remoteObserver(Observer observer) {
+
+    }
+
+    @Override
     public void stateChanged() {
 
     }

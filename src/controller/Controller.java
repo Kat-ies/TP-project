@@ -1,6 +1,7 @@
 package controller;
 
 import model.ObservableModel;
+import shape.ShapeType;
 
 public class Controller implements ControllerInterface {
 
@@ -11,7 +12,7 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public void changeShapeCreationForm(String shapeType) {
+    public void changeShapeCreationForm(ShapeType shapeType) {
 
     }
 

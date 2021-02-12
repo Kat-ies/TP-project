@@ -1,8 +1,10 @@
 package controller;
 
+import shape.ShapeType;
+
 public interface ControllerInterface {
 
-    public void changeShapeCreationForm(String shapeType);
+    public void changeShapeCreationForm(ShapeType shapeType);
 
     public void deleteClicked(int id);
 
