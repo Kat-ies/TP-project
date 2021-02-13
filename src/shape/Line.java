@@ -2,7 +2,7 @@ package shape;
 
 import utils.Point;
 
-public class Line implements Shape {
+public class Line extends Shape {
 
     private Point endPoint;
     private Point startPoint;

@@ -8,17 +8,17 @@ import java.util.List;
 
 public interface ObservableModel {
 
-    public int addShape(Shape shape);
+    public void addShape(Shape shape);
 
-    public void deleteShape(int id);
+    public void deleteShape(String name);
 
-    public void drawShape(int id);
+    public void drawShape(String name);
 
-    public List<Integer> getIds();
+    public List<String> getShapeNames();
 
-    public Point getShapeLocation(int id);
+    public Point getShapeLocation(String name);
 
-    public void moveShape(int id, Point point);
+    public void moveShape(String name, Point point);
 
     public void registerObserver(Observer observer);
 

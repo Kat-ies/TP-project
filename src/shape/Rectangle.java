@@ -2,7 +2,7 @@ package shape;
 
 import utils.Point;
 
-public class Rectangle implements Shape {
+public class Rectangle extends Shape {
 
     private int height;
     private Point topLeftCorner;

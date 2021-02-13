@@ -2,7 +2,7 @@ package shape;
 
 import utils.Point;
 
-public class Ellipse implements Shape {
+public class Ellipse extends Shape {
 
     private Point center;
     private int xLength;

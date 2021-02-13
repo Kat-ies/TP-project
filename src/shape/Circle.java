@@ -2,7 +2,7 @@ package shape;
 
 import utils.Point;
 
-public class Circle implements Shape {
+public class Circle extends Shape {
 
     private Point center;
     private int radius;

@@ -16,32 +16,32 @@ public class Model implements ObservableModel {
     }
 
     @Override
-    public int addShape(Shape shape) {
-        return 0;
-    }
-
-    @Override
-    public void deleteShape(int id) {
+    public void addShape(Shape shape) {
 
     }
 
     @Override
-    public void drawShape(int id) {
+    public void deleteShape(String name) {
 
     }
 
     @Override
-    public List<Integer> getIds() {
+    public void drawShape(String name) {
+
+    }
+
+    @Override
+    public List<String> getShapeNames() {
         return null;
     }
 
     @Override
-    public Point getShapeLocation(int id) {
+    public Point getShapeLocation(String name) {
         return null;
     }
 
     @Override
-    public void moveShape(int id, Point point) {
+    public void moveShape(String name, Point point) {
 
     }
 

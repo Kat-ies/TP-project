@@ -4,7 +4,7 @@ import utils.Point;
 
 import java.util.List;
 
-public class Polygon implements Shape {
+public class Polygon extends Shape {
 
     private List<Point> points;
 

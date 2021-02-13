@@ -12,27 +12,18 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public void changeShapeCreationForm(ShapeType shapeType) {
+    public void createClicked() {
 
     }
 
     @Override
-    public void deleteClicked(int id) {
+    public void deleteClicked(String name) {
 
     }
 
     @Override
-    public void getLocationClicked(int id) {
+    public void moveClicked(String name) {
 
     }
 
-    @Override
-    public void moveClicked(int id) {
-
-    }
-
-    @Override
-    public void submitClicked() {
-
-    }
 }

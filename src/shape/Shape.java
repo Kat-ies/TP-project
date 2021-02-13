@@ -2,12 +2,22 @@ package shape;
 
 import utils.Point;
 
-public interface Shape {
+public abstract class Shape {
 
-    public void draw();
+    private String name;
 
-    public Point location();
+    public String getName() {
+        return null;
+    }
 
-    public void move(Point point);
+    public void setName(String name) {
+
+    }
+
+    public abstract void draw();
+
+    public abstract Point location();
+
+    public abstract void move(Point point);
 
 }

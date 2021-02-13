@@ -2,7 +2,7 @@ package shape;
 
 import utils.Point;
 
-public class Diamond implements Shape {
+public class Diamond extends Shape {
 
     private Point center;
     private int xLength;

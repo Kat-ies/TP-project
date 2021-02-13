@@ -2,7 +2,7 @@ package shape;
 
 import utils.Point;
 
-public class RegularPolygon implements Shape {
+public class RegularPolygon extends Shape {
 
     private Point center;
     private int sidesNumber;

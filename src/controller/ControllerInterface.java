@@ -4,14 +4,10 @@ import shape.ShapeType;
 
 public interface ControllerInterface {
 
-    public void changeShapeCreationForm(ShapeType shapeType);
+    public void createClicked();
 
-    public void deleteClicked(int id);
+    public void deleteClicked(String name);
 
-    public void getLocationClicked(int id);
-
-    public void moveClicked(int id);
-
-    public void submitClicked();
+    public void moveClicked(String name);
 
 }
