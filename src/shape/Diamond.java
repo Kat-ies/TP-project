@@ -4,9 +4,8 @@ import utils.Point;
 
 public class Diamond extends Shape {
 
-    private Point center;
-    private int xLength;
-    private int yLength;
+    private Point rightPoint;
+    private Point topPoint;
 
     public Diamond() {
 
@@ -17,16 +16,12 @@ public class Diamond extends Shape {
 
     }
 
-    public Point getCenter() {
+    public Point getRightPoint() {
         return null;
     }
 
-    public int getXLength() {
-        return 0;
-    }
-
-    public int getYLength() {
-        return 0;
+    public Point getTopPoint() {
+        return null;
     }
 
     @Override
@@ -39,15 +34,11 @@ public class Diamond extends Shape {
 
     }
 
-    public void setCenter(Point point) {
+    public void setRightPoint(Point point) {
 
     }
 
-    public void setXLength(int length) {
-
-    }
-
-    public void setYLength(int length) {
+    public void setTopPoint(Point point) {
 
     }
 }

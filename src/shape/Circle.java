@@ -2,10 +2,7 @@ package shape;
 
 import utils.Point;
 
-public class Circle extends Shape {
-
-    private Point center;
-    private int radius;
+public class Circle extends Rectangle {
 
     public Circle() {
 
@@ -14,14 +11,6 @@ public class Circle extends Shape {
     @Override
     public void draw() {
 
-    }
-
-    public Point getCenter() {
-        return null;
-    }
-
-    public int getRadius() {
-        return 0;
     }
 
     @Override
@@ -34,11 +23,4 @@ public class Circle extends Shape {
 
     }
 
-    public void setCenter(Point point) {
-
-    }
-
-    public void setRadius(int radius) {
-
-    }
 }

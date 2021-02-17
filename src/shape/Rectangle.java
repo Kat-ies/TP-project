@@ -4,9 +4,8 @@ import utils.Point;
 
 public class Rectangle extends Shape {
 
-    private int height;
+    private Point bottomRightCorner;
     private Point topLeftCorner;
-    private int width;
 
     public Rectangle() {
 
@@ -17,16 +16,12 @@ public class Rectangle extends Shape {
 
     }
 
-    public int getHeight() {
-        return 0;
+    public Point getBottomRightCorner() {
+        return null;
     }
 
     public Point getTopLeftCorner() {
         return null;
-    }
-
-    public int getWidth() {
-        return 0;
     }
 
     @Override
@@ -39,15 +34,11 @@ public class Rectangle extends Shape {
 
     }
 
-    public void setHeight(int height) {
+    public void setBottomRightCorner(Point point) {
 
     }
 
     public void setTopLeftCorner(Point point) {
-
-    }
-
-    public void setWidth(int width) {
 
     }
 }
