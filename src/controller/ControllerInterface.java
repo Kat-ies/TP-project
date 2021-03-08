@@ -1,7 +1,5 @@
 package controller;
 
-import shape.ShapeType;
-
 public interface ControllerInterface {
 
     public void createClicked();

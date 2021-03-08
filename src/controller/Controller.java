@@ -1,7 +1,6 @@
 package controller;
 
 import model.ObservableModel;
-import shape.ShapeType;
 
 public class Controller implements ControllerInterface {
 

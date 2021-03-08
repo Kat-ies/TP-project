@@ -2,43 +2,27 @@ package shape;
 
 import utils.Point;
 
-public class Line extends Shape {
+import java.awt.*;
 
-    private Point endPoint;
-    private Point startPoint;
+public class Line extends Ray {
+
 
     public Line() {
 
     }
 
-    @Override
-    public void draw() {
-
+    public Line(Point startPoint, Point endPoint, int frameWidth, Color frameColor) {
+        super(startPoint, endPoint, frameWidth, frameColor);
     }
 
-    public Point getEndPoint() {
-        return null;
-    }
-
-    public Point getStartPoint() {
-        return null;
-    }
 
     @Override
-    public Point location() {
-        return null;
-    }
-
-    @Override
-    public void move(Point point) {
-
-    }
-
-    public void setEndPoint(Point point) {
-
-    }
-
-    public void setStartPoint(Point point) {
-
+    public void draw(Graphics graphics) {
+        graphics.setColor(super.getFrameColor());
+        super.draw(graphics);
+        Point theCenter = location();
+        Point endPoint = getEndPoint();
+        setEndPoint(new Point(2*theCenter.x-endPoint.x, 2*theCenter.y-endPoint.y));
+        super.draw(graphics);
     }
 }
