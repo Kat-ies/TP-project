@@ -6,15 +6,13 @@ import java.awt.*;
 
 public abstract class Shape {
 
-    private String name;
+    private String name = "Shape";
     private Color frameColor = new Color(0,0,0);
     private int frameWidth = 5;
     private Color fillColor = new Color(255,255,255);
 
     public Shape() {
-
     }
-
 
     public Shape(int frameWidth, Color frameColor) {
         this.frameWidth = frameWidth;

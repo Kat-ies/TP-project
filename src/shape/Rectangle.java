@@ -23,19 +23,31 @@ public class Rectangle extends Shape {
         super(frameWidth, frameColor, fillColor);
         this.bottomRightCorner = bottomRightCorner;
         this.topLeftCorner = topLeftCorner;
+        swapCorners();
+    }
+
+    private void swapCorners() {
+        if (topLeftCorner.x > bottomRightCorner.x) {
+            int tmp = topLeftCorner.x;
+            topLeftCorner.x = bottomRightCorner.x;
+            bottomRightCorner.x = tmp;
+        }
+        if (topLeftCorner.y > bottomRightCorner.y) {
+            int tmp = topLeftCorner.y;
+            topLeftCorner.y = bottomRightCorner.y;
+            bottomRightCorner.y = tmp;
+        }
     }
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.setColor(super.getFrameColor());
-
-        //drawRect(int x, int y, int width, int height)
-        graphics.drawRect(this.topLeftCorner.x, this.topLeftCorner.y,
+        graphics.setColor(super.getFillColor());
+        graphics.fillRect(this.topLeftCorner.x, this.topLeftCorner.y,
                 this.bottomRightCorner.x - this.topLeftCorner.x,
                 this.bottomRightCorner.y - this.topLeftCorner.y);
 
-        graphics.setColor(super.getFillColor());
-        graphics.fillRect(this.topLeftCorner.x, this.topLeftCorner.y,
+        graphics.setColor(super.getFrameColor());
+        graphics.drawRect(this.topLeftCorner.x, this.topLeftCorner.y,
                 this.bottomRightCorner.x - this.topLeftCorner.x,
                 this.bottomRightCorner.y - this.topLeftCorner.y);
     }
