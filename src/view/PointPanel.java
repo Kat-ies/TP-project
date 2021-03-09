@@ -23,20 +23,8 @@ public class PointPanel extends JPanel {
         add(new JLabel("Y: "));
         add(yPointField);
 
-        InputVerifier verifier = new InputVerifier() {
-            @Override
-            public boolean verify(JComponent input) {
-                try {
-                    Integer.parseInt(((JTextField)input).getText());
-                } catch (NumberFormatException e) {
-                    return false;
-                }
-                return true;
-            }
-        };
-
-        xPointField.setInputVerifier(verifier);
-        yPointField.setInputVerifier(verifier);
+        xPointField.setInputVerifier(new IntegerVerifier());
+        yPointField.setInputVerifier(new IntegerVerifier());
     }
 
     public void setPoint(Point point) {
