@@ -1,8 +1,6 @@
 package view.shapedialogs;
 
-import org.w3c.dom.css.Rect;
 import shape.ShapeException;
-import shape.ShapeType;
 import view.DataValidateException;
 
 import javax.swing.*;
@@ -19,7 +17,6 @@ public class ShapeBuildDialog extends JDialog {
     private ArrayList<ShapeBuildPanel> shapePanels;
 
     private void registerShapeType(String name, ShapeBuildPanel panel) {
-        int index = shapePanels.size();
         panel.setupControls();
         shapePanels.add(panel);
         typeChooser.addItem(name);

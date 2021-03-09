@@ -1,6 +1,5 @@
 package view.shapedialogs;
 
-import shape.Diamond;
 import shape.Shape;
 import shape.Triangle;
 import utils.Point;

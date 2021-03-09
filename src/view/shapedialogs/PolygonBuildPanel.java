@@ -5,7 +5,6 @@ import shape.Shape;
 import utils.Point;
 import view.DataValidateException;
 import view.PointDialog;
-import view.PointFormatException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,16 +27,19 @@ public class PolygonBuildPanel extends ShapeBuildPanel {
             JOptionPane.showMessageDialog(this, "Invalid point", "Error", JOptionPane.ERROR_MESSAGE);
         }
         pointList.updateUI();
+        updateButtons();
     }
 
     private void removePoint() {
         points.remove(pointList.getSelectedValue());
         pointList.updateUI();
+        pointList.setSelectedIndex(0);
     }
 
     private void updateButtons() {
         addButton.setEnabled(true);
-        removeButton.setEnabled(pointList.getSelectedIndex() >= 0);
+        System.out.println(points.size());
+        removeButton.setEnabled(!points.isEmpty() && pointList.getSelectedIndex() >= 0);
     }
 
     @Override
@@ -74,6 +76,7 @@ public class PolygonBuildPanel extends ShapeBuildPanel {
         pointListContainer.add(scrollPane);
 
         resetPointList();
+        updateButtons();
     }
 
     private void resetPointList() {
