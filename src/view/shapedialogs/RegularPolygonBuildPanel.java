@@ -64,5 +64,6 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
 
         numberOfSidesChooser = new JSpinner();
         numberOfSidesChooser.setModel(new SpinnerNumberModel(5, 1, 100, 1));
+        addField("Number of sides: ", numberOfSidesChooser);
     }
 }
