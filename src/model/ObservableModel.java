@@ -1,6 +1,7 @@
 package model;
 
 import shape.Shape;
+import shape.ShapeException;
 import utils.Point;
 import view.Observer;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface ObservableModel {
 
-    public void addShape(Shape shape);
+    public void addShape(Shape shape) throws ShapeException;
 
     public void removeShape(String name);
 

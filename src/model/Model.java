@@ -1,6 +1,7 @@
 package model;
 
 import shape.Shape;
+import shape.ShapeException;
 import utils.Point;
 import view.Observer;
 
@@ -20,23 +21,11 @@ public class Model implements ObservableModel {
         this.shapes = new HashMap<>();
     }
 
-    private void correctShapeName(Shape shape) {
-        String name = shape.getName();
-        if (!shapes.containsKey(name)) {
-            return;
-        }
-        for (int number = 1; ; ++number) {
-            String newName = name + number;
-            if (!shapes.containsKey(newName)) {
-                shape.setName(newName);
-                return;
-            }
-        }
-    }
-
     @Override
-    public void addShape(Shape shape) {
-        correctShapeName(shape);
+    public void addShape(Shape shape) throws ShapeException {
+        if (shapes.containsKey(shape.getName())) {
+            throw new ShapeException("Shape with name " + shape.getName() + " already exists");
+        }
         shapes.put(shape.getName(), shape);
         stateChanged();
     }
