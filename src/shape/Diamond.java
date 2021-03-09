@@ -37,8 +37,8 @@ public class Diamond extends Shape {
         Point bottomPoint = new Point(center.x, center.y - deltaY);
         Point leftPoint = new Point(center.x - deltaX, center.y);
 
-        int[] xPoints = new int[] {topPoint.x, rightPoint.x, bottomPoint.x, rightPoint.x};
-        int[] yPoints = new int[] {topPoint.y, rightPoint.y, bottomPoint.y, rightPoint.y};
+        int[] xPoints = new int[] {topPoint.x, rightPoint.x, bottomPoint.x, leftPoint.x};
+        int[] yPoints = new int[] {topPoint.y, rightPoint.y, bottomPoint.y, leftPoint.y};
 
 
         graphics.setColor(super.getFillColor());

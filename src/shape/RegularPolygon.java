@@ -9,22 +9,22 @@ import java.util.List;
 public class RegularPolygon extends Polygon {
 
     private Point center;
-    private Point pointOnCircle;
+    private int radius;
     private int sidesNumber;
 
     public RegularPolygon() {
 
     }
 
-    public RegularPolygon(Point center, Point pointOnCircle, int sidesNumber,
+    public RegularPolygon(Point center, int radius, int sidesNumber,
                           int frameWidth, Color frameColor, Color fillColor) {
         super(frameWidth, frameColor, fillColor);
 
         this.center = center;
-        this.pointOnCircle = pointOnCircle;
+        this.radius = radius;
         this.sidesNumber = sidesNumber;
 
-        List<Point> points = getPolygonPoints(center, pointOnCircle, sidesNumber);
+        List<Point> points = getPolygonPoints(center, radius, sidesNumber);
         super.setPoints(points);
     }
 
@@ -32,17 +32,16 @@ public class RegularPolygon extends Polygon {
 
     public void setCenter(Point center) { this.center = center; }
 
-    public Point getPointOnCircle() { return pointOnCircle; }
+    public int getRadius() { return radius; }
 
-    public void setPointOnCircle(Point pointOnCircle) { this.pointOnCircle = pointOnCircle; }
+    public void setRadius(int radius) { this.radius = radius; }
 
     public int getSidesNumber() { return sidesNumber; }
 
     public void setSidesNumber(int sidesNumber) { this.sidesNumber = sidesNumber; }
 
-    private ArrayList<Point> getPolygonPoints(Point center, Point pointOnCircle, int sidesNumber) {
+    private ArrayList<Point> getPolygonPoints(Point center, double radius, int sidesNumber) {
         ArrayList<Point> points = new ArrayList<Point>(sidesNumber + 1);
-        double radius = Math.sqrt(Math.pow((pointOnCircle.x) - center.x, 2) + Math.pow(pointOnCircle.y - center.y, 2));
         double z;
         double angle = 360.0 / sidesNumber;
 

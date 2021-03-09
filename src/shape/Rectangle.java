@@ -23,10 +23,10 @@ public class Rectangle extends Shape {
         super(frameWidth, frameColor, fillColor);
         this.bottomRightCorner = bottomRightCorner;
         this.topLeftCorner = topLeftCorner;
-        swapCorners();
     }
 
-    private void swapCorners() {
+    @Override
+    public void validate() throws ShapeException {
         if (topLeftCorner.x > bottomRightCorner.x) {
             int tmp = topLeftCorner.x;
             topLeftCorner.x = bottomRightCorner.x;
@@ -57,7 +57,7 @@ public class Rectangle extends Shape {
     }
 
     public Point getTopLeftCorner() {
-        return this.bottomRightCorner;
+        return this.topLeftCorner;
     }
 
     public void setBottomRightCorner(Point point) { this.bottomRightCorner = point; }

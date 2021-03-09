@@ -25,6 +25,7 @@ public abstract class Shape {
         this.fillColor = fillColor;
     }
 
+    public void validate() throws ShapeException {}
 
     public String getName() { return name; }
 

@@ -1,8 +1,12 @@
 package controller;
 
 import model.ObservableModel;
+import shape.Shape;
 import shape.ShapeException;
+import view.DataValidateException;
+import view.PointFormatException;
 import view.View;
+import utils.Point;
 
 public class Controller implements ControllerInterface {
 
@@ -21,9 +25,15 @@ public class Controller implements ControllerInterface {
     @Override
     public void createClicked() {
         try {
-            model.addShape(view.buildShape());
+            Shape shape = view.buildShape();
+            if (shape == null) {
+                return;
+            }
+            model.addShape(shape);
         } catch (ShapeException e) {
             view.showError("Cannot create shape: " + e.getMessage());
+        } catch (DataValidateException e) {
+            view.showError("Invalid data: " + e.getMessage());
         }
     }
 
@@ -34,7 +44,15 @@ public class Controller implements ControllerInterface {
 
     @Override
     public void moveClicked(String name) {
-        model.moveShape(name, view.askMovePoint(model.getShapeLocation(name)));
+        try {
+            Point point = view.askMovePoint(model.getShapeLocation(name));
+            if (point == null) {
+                return;
+            }
+            model.moveShape(name, point);
+        } catch (DataValidateException e) {
+            view.showError("Invalid data: " + e.getMessage());
+        }
     }
 
 }

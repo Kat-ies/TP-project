@@ -2,18 +2,16 @@ package view;
 
 import controller.ControllerInterface;
 import model.ObservableModel;
-import shape.Rectangle;
 import shape.Shape;
 import shape.ShapeException;
-import shape.ShapeType;
 
 import javax.swing.*;
 import java.awt.*;
 
-import java.util.Random;
 import java.util.Vector;
 
 import utils.Point;
+import view.shapedialogs.ShapeBuildDialog;
 
 public class View implements Observer {
     private ControllerInterface controller;
@@ -23,38 +21,32 @@ public class View implements Observer {
     private JButton createButton;
     private JButton removeButton;
     private JButton moveButton;
+    private PointDialog pointDialog;
+    private ShapeBuildDialog shapeDialog;
 
     public View(ObservableModel model) {
         this.model = model;
         model.registerObserver(this);
-        createControls();
+        setupControls();
     }
 
     public void setController(ControllerInterface controller) {
         this.controller = controller;
     }
 
-    static Random random = new Random(); // TODO : remove random
-
     public void showError(String message) {
         JOptionPane.showMessageDialog(frame, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    public Shape buildShape() throws ShapeException {
-        // TODO
-        return new Rectangle(new Point(random.nextInt(300), random.nextInt(300)),
-                             new Point(random.nextInt(300), random.nextInt(300)),
-                             random.nextInt(3) + 1,
-                             new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)),
-                             new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+    public Shape buildShape() throws ShapeException, DataValidateException {
+        return shapeDialog.chooseShape();
     }
 
-    public Point askMovePoint(Point oldPoint) {
-        // TODO
-        return new Point(random.nextInt(300), random.nextInt(300));
+    public Point askMovePoint(Point oldPoint) throws DataValidateException {
+        return pointDialog.choosePoint(oldPoint);
     }
 
-    private void createControls() {
+    private void setupControls() {
         frame = new JFrame();
         frame.setLocationRelativeTo(null);
         frame.setTitle("Shape Builder");
@@ -70,9 +62,13 @@ public class View implements Observer {
         frame.add(drawPanel, BorderLayout.CENTER);
 
         list = new JList<>();
-        list.setPreferredSize(new Dimension(200, 200));
+        list.setLayoutOrientation(JList.VERTICAL);
         list.addListSelectionListener(listSelectionEvent -> updateButtonsEnabled());
         controlPanel.add(list, BorderLayout.CENTER);
+
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setViewportView(list);
+        controlPanel.add(scrollPane);
 
         createButton = new JButton("Create...");
         removeButton = new JButton("Remove");
@@ -88,6 +84,12 @@ public class View implements Observer {
         buttonPanel.add(removeButton);
         buttonPanel.add(moveButton);
         controlPanel.add(buttonPanel, BorderLayout.NORTH);
+
+        pointDialog = new PointDialog();
+        pointDialog.setLocationRelativeTo(frame);
+
+        shapeDialog = new ShapeBuildDialog();
+        shapeDialog.setLocationRelativeTo(frame);
     }
 
     public void show() {
@@ -102,9 +104,7 @@ public class View implements Observer {
         moveButton.setEnabled(hasSelection);
     }
 
-    @Override
-    public void update() {
-        frame.repaint();
+    private void updateShapeList() {
         Vector<String> shapeNames = new Vector<>(model.getShapeNames());
         shapeNames.sort(String::compareTo);
         String oldSelection = list.getSelectedValue();
@@ -115,5 +115,13 @@ public class View implements Observer {
         if (list.getSelectedIndex() == -1 && !shapeNames.isEmpty()) {
             list.setSelectedIndex(0);
         }
+        list.ensureIndexIsVisible(list.getSelectedIndex());
+    }
+
+    @Override
+    public void update() {
+        frame.repaint();
+        updateShapeList();
+        updateButtonsEnabled();
     }
 }
