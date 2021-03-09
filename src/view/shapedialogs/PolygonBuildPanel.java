@@ -38,7 +38,6 @@ public class PolygonBuildPanel extends ShapeBuildPanel {
 
     private void updateButtons() {
         addButton.setEnabled(true);
-        System.out.println(points.size());
         removeButton.setEnabled(!points.isEmpty() && pointList.getSelectedIndex() >= 0);
     }
 

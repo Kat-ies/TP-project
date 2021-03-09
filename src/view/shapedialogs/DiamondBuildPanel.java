@@ -15,12 +15,12 @@ public class DiamondBuildPanel extends ShapeBuildPanel {
         super.setupControls();
 
         topPointChooser = new PointPanel();
-        topPointChooser.setPoint(new Point(1, 1));
+        topPointChooser.setPoint(new Point(50, 1));
         addField("Top point:", topPointChooser);
 
         rightPointChooser = new PointPanel();
         rightPointChooser.setPoint(new Point(100, 100));
-        addField("Bottom-right point:", rightPointChooser);
+        addField("Right point:", rightPointChooser);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class TriangleBuildPanel extends ShapeBuildPanel {
         addField("Second point:", secondPointChooser);
 
         thirdPointChooser = new PointPanel();
-        thirdPointChooser.setPoint(new Point(100, 1));
+        thirdPointChooser.setPoint(new Point(1, 100));
         addField("Third point:", thirdPointChooser);
     }
 
