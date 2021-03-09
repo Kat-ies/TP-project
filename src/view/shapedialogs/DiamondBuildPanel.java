@@ -4,21 +4,21 @@ import shape.Diamond;
 import shape.Shape;
 import utils.Point;
 import view.DataValidateException;
-import view.PointPanel;
+import view.PointPickerPanel;
 
 public class DiamondBuildPanel extends ShapeBuildPanel {
-    private PointPanel topPointChooser;
-    private PointPanel rightPointChooser;
+    private PointPickerPanel topPointChooser;
+    private PointPickerPanel rightPointChooser;
 
     @Override
     public void setupControls() {
         super.setupControls();
 
-        topPointChooser = new PointPanel();
+        topPointChooser = new PointPickerPanel();
         topPointChooser.setPoint(new Point(50, 1));
         addField("Top point:", topPointChooser);
 
-        rightPointChooser = new PointPanel();
+        rightPointChooser = new PointPickerPanel();
         rightPointChooser.setPoint(new Point(100, 100));
         addField("Right point:", rightPointChooser);
     }

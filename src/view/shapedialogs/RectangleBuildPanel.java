@@ -3,12 +3,12 @@ package view.shapedialogs;
 import shape.Rectangle;
 import shape.Shape;
 import view.DataValidateException;
-import view.PointPanel;
+import view.PointPickerPanel;
 import utils.Point;
 
 public class RectangleBuildPanel extends ShapeBuildPanel {
-    private PointPanel topLeftPointChooser;
-    private PointPanel bottomRightPointChooser;
+    private PointPickerPanel topLeftPointChooser;
+    private PointPickerPanel bottomRightPointChooser;
 
     @Override
     protected void setupShape(Shape shape) throws DataValidateException {
@@ -22,11 +22,11 @@ public class RectangleBuildPanel extends ShapeBuildPanel {
     public void setupControls() {
         super.setupControls();
 
-        topLeftPointChooser = new PointPanel();
+        topLeftPointChooser = new PointPickerPanel();
         topLeftPointChooser.setPoint(new Point(1, 1));
         addField("Top-left point:", topLeftPointChooser);
 
-        bottomRightPointChooser = new PointPanel();
+        bottomRightPointChooser = new PointPickerPanel();
         bottomRightPointChooser.setPoint(new Point(100, 100));
         addField("Bottom-right point:", bottomRightPointChooser);
     }

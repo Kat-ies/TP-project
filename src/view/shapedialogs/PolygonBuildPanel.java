@@ -4,7 +4,7 @@ import shape.Polygon;
 import shape.Shape;
 import utils.Point;
 import view.DataValidateException;
-import view.PointDialog;
+import view.PointPickerDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class PolygonBuildPanel extends ShapeBuildPanel {
     private JList<Point> pointList;
     private JButton addButton;
     private JButton removeButton;
-    private PointDialog pointDialog;
+    private PointPickerDialog pointDialog;
 
     private void addPoint() {
         try {
@@ -45,7 +45,7 @@ public class PolygonBuildPanel extends ShapeBuildPanel {
     public void setupControls() {
         super.setupControls();
 
-        pointDialog = new PointDialog();
+        pointDialog = new PointPickerDialog();
         pointDialog.setLocationRelativeTo(this);
 
         JPanel controlPanel = new JPanel();

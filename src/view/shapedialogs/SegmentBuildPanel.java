@@ -4,21 +4,21 @@ import shape.Segment;
 import shape.Shape;
 import utils.Point;
 import view.DataValidateException;
-import view.PointPanel;
+import view.PointPickerPanel;
 
 public class SegmentBuildPanel extends ShapeBuildPanel {
-    private PointPanel startChooser;
-    private PointPanel endChooser;
+    private PointPickerPanel startChooser;
+    private PointPickerPanel endChooser;
 
     @Override
     public void setupControls() {
         super.setupControls();
 
-        startChooser = new PointPanel();
+        startChooser = new PointPickerPanel();
         startChooser.setPoint(new Point(1, 1));
         addField("Start:", startChooser);
 
-        endChooser = new PointPanel();
+        endChooser = new PointPickerPanel();
         endChooser.setPoint(new Point(100, 100));
         addField("End:", endChooser);
     }

@@ -5,11 +5,11 @@ import java.awt.*;
 
 import utils.Point;
 
-public class PointDialog extends JDialog {
-    private PointPanel panel;
+public class PointPickerDialog extends JDialog {
+    private PointPickerPanel panel;
     private boolean isSuccess = false;
 
-    public PointDialog() {
+    public PointPickerDialog() {
         setupControls();
     }
 
@@ -19,7 +19,7 @@ public class PointDialog extends JDialog {
 
         setTitle("Choose point...");
 
-        panel = new PointPanel();
+        panel = new PointPickerPanel();
         add(panel, BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();

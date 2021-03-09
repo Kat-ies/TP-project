@@ -21,7 +21,7 @@ public class View implements Observer {
     private JButton createButton;
     private JButton removeButton;
     private JButton moveButton;
-    private PointDialog pointDialog;
+    private PointPickerDialog pointDialog;
     private ShapeBuildDialog shapeDialog;
 
     public View(ObservableModel model) {
@@ -85,7 +85,7 @@ public class View implements Observer {
         buttonPanel.add(moveButton);
         controlPanel.add(buttonPanel, BorderLayout.NORTH);
 
-        pointDialog = new PointDialog();
+        pointDialog = new PointPickerDialog();
         pointDialog.setLocationRelativeTo(frame);
 
         shapeDialog = new ShapeBuildDialog();

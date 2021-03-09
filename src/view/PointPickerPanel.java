@@ -5,11 +5,11 @@ import utils.Point;
 import javax.swing.*;
 import java.awt.*;
 
-public class PointPanel extends JPanel {
+public class PointPickerPanel extends JPanel {
     private JTextField xPointField;
     private JTextField yPointField;
 
-    public PointPanel() {
+    public PointPickerPanel() {
         xPointField = new JTextField("0");
         yPointField = new JTextField("0");
 

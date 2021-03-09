@@ -5,13 +5,13 @@ import shape.Shape;
 import utils.Point;
 import view.DataValidateException;
 import view.IntegerVerifier;
-import view.PointPanel;
+import view.PointPickerPanel;
 
 import javax.swing.*;
 import java.text.ParseException;
 
 public class RegularPolygonBuildPanel extends ShapeBuildPanel {
-    private PointPanel centerChooser;
+    private PointPickerPanel centerChooser;
     private JTextField radiusChooser;
     private JSpinner numberOfSidesChooser;
 
@@ -46,7 +46,7 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
     public void setupControls() {
         super.setupControls();
 
-        centerChooser = new PointPanel();
+        centerChooser = new PointPickerPanel();
         centerChooser.setPoint(new Point(50, 50));
         addField("Center:", centerChooser);
 
