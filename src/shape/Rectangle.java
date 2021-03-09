@@ -1,5 +1,6 @@
 package shape;
 
+import model.ModelException;
 import utils.Point;
 
 import java.awt.*;
@@ -26,7 +27,7 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    public void validate() throws ShapeException {
+    public void validate() throws ModelException {
         if (topLeftCorner.x > bottomRightCorner.x) {
             int tmp = topLeftCorner.x;
             topLeftCorner.x = bottomRightCorner.x;

@@ -2,7 +2,7 @@ package controller;
 
 import model.ObservableModel;
 import shape.Shape;
-import shape.ShapeException;
+import model.ModelException;
 import view.DataValidateException;
 import view.View;
 import utils.Point;
@@ -29,7 +29,7 @@ public class Controller implements ControllerInterface {
                 return;
             }
             model.addShape(shape);
-        } catch (ShapeException e) {
+        } catch (ModelException e) {
             view.showError("Cannot create shape: " + e.getMessage());
         } catch (DataValidateException e) {
             view.showError("Invalid data: " + e.getMessage());

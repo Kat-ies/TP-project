@@ -1,6 +1,6 @@
 package view.shapedialogs;
 
-import shape.ShapeException;
+import model.ModelException;
 import view.DataValidateException;
 
 import javax.swing.*;
@@ -89,7 +89,7 @@ public class ShapeBuildDialog extends JDialog {
         pack();
     }
 
-    public Shape chooseShape() throws ShapeException, DataValidateException {
+    public Shape chooseShape() throws ModelException, DataValidateException {
         isSuccess = false;
         setVisible(true);
         return isSuccess ? activePanel.getShape() : null;

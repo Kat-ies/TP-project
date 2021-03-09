@@ -1,5 +1,6 @@
 package shape;
 
+import model.ModelException;
 import utils.Point;
 
 import java.awt.*;
@@ -25,7 +26,7 @@ public abstract class Shape {
         this.fillColor = fillColor;
     }
 
-    public void validate() throws ShapeException {}
+    public void validate() throws ModelException {}
 
     public String getName() { return name; }
 

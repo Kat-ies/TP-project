@@ -1,7 +1,6 @@
 package model;
 
 import shape.Shape;
-import shape.ShapeException;
 import utils.Point;
 import view.Observer;
 
@@ -22,9 +21,9 @@ public class Model implements ObservableModel {
     }
 
     @Override
-    public void addShape(Shape shape) throws ShapeException {
+    public void addShape(Shape shape) throws ModelException {
         if (shapes.containsKey(shape.getName())) {
-            throw new ShapeException("Shape with name " + shape.getName() + " already exists");
+            throw new ModelException("Shape with name " + shape.getName() + " already exists");
         }
         shapes.put(shape.getName(), shape);
         stateChanged();

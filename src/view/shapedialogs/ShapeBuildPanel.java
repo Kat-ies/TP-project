@@ -1,7 +1,7 @@
 package view.shapedialogs;
 
 import shape.Shape;
-import shape.ShapeException;
+import model.ModelException;
 import view.DataValidateException;
 
 import javax.swing.*;
@@ -14,7 +14,7 @@ public abstract class ShapeBuildPanel extends JPanel {
     private Color fillColor = new Color(255, 255, 255);
     private Color frameColor = new Color(0, 0, 0);
 
-    public Shape getShape() throws ShapeException, DataValidateException {
+    public Shape getShape() throws ModelException, DataValidateException {
         Shape shape = createShape();
         setupShape(shape);
         shape.validate();

@@ -3,7 +3,7 @@ package view;
 import controller.ControllerInterface;
 import model.ObservableModel;
 import shape.Shape;
-import shape.ShapeException;
+import model.ModelException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,7 +38,7 @@ public class View implements Observer {
         JOptionPane.showMessageDialog(frame, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    public Shape buildShape() throws ShapeException, DataValidateException {
+    public Shape buildShape() throws ModelException, DataValidateException {
         return shapeDialog.chooseShape();
     }
 

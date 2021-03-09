@@ -1,5 +1,6 @@
 package shape;
 
+import model.ModelException;
 import utils.Point;
 
 import java.awt.*;
@@ -15,7 +16,7 @@ public class Circle extends Ellipse {
         super(topLeftCorner, bottomRightCorner, frameWidth, frameColor, fillColor);
     }
 
-    public void validate() throws ShapeException {
+    public void validate() throws ModelException {
         int radius = Math.min(getBottomRightCorner().x - getTopLeftCorner().x,
                               getBottomRightCorner().y - getTopLeftCorner().y) / 2;
         Point center = location();
