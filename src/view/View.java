@@ -109,6 +109,11 @@ public class View implements Observer {
         shapeNames.sort(String::compareTo);
         String oldSelection = list.getSelectedValue();
         list.setListData(shapeNames);
+
+        // Restore selection
         list.setSelectedValue(oldSelection, true);
+        if (list.getSelectedIndex() == -1 && !shapeNames.isEmpty()) {
+            list.setSelectedIndex(0);
+        }
     }
 }
