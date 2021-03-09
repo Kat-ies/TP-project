@@ -17,7 +17,7 @@ public class View implements Observer {
     private ControllerInterface controller;
     private ObservableModel model;
     private JFrame frame;
-    private JList<String> list;
+    private JList<String> shapeList;
     private JButton createButton;
     private JButton removeButton;
     private JButton moveButton;
@@ -61,13 +61,13 @@ public class View implements Observer {
         DrawPanel drawPanel = new DrawPanel(model);
         frame.add(drawPanel, BorderLayout.CENTER);
 
-        list = new JList<>();
-        list.setLayoutOrientation(JList.VERTICAL);
-        list.addListSelectionListener(listSelectionEvent -> updateButtonsEnabled());
-        controlPanel.add(list, BorderLayout.CENTER);
+        shapeList = new JList<>();
+        shapeList.setLayoutOrientation(JList.VERTICAL);
+        shapeList.addListSelectionListener(listSelectionEvent -> updateButtonsEnabled());
+        controlPanel.add(shapeList, BorderLayout.CENTER);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setViewportView(list);
+        scrollPane.setViewportView(shapeList);
         controlPanel.add(scrollPane);
 
         createButton = new JButton("Create...");
@@ -75,8 +75,8 @@ public class View implements Observer {
         moveButton = new JButton("Move...");
 
         createButton.addActionListener(actionEvent -> controller.createClicked());
-        removeButton.addActionListener(actionEvent -> controller.removeClicked(list.getSelectedValue()));
-        moveButton.addActionListener(actionEvent -> controller.moveClicked(list.getSelectedValue()));
+        removeButton.addActionListener(actionEvent -> controller.removeClicked(shapeList.getSelectedValue()));
+        moveButton.addActionListener(actionEvent -> controller.moveClicked(shapeList.getSelectedValue()));
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout());
@@ -98,7 +98,7 @@ public class View implements Observer {
     }
 
     private void updateButtonsEnabled() {
-        boolean hasSelection = !list.getSelectedValuesList().isEmpty();
+        boolean hasSelection = !shapeList.getSelectedValuesList().isEmpty();
         createButton.setEnabled(true);
         removeButton.setEnabled(hasSelection);
         moveButton.setEnabled(hasSelection);
@@ -107,15 +107,15 @@ public class View implements Observer {
     private void updateShapeList() {
         Vector<String> shapeNames = new Vector<>(model.getShapeNames());
         shapeNames.sort(String::compareTo);
-        String oldSelection = list.getSelectedValue();
-        list.setListData(shapeNames);
+        String oldSelection = shapeList.getSelectedValue();
+        shapeList.setListData(shapeNames);
 
         // Restore selection
-        list.setSelectedValue(oldSelection, true);
-        if (list.getSelectedIndex() == -1 && !shapeNames.isEmpty()) {
-            list.setSelectedIndex(0);
+        shapeList.setSelectedValue(oldSelection, true);
+        if (shapeList.getSelectedIndex() == -1 && !shapeNames.isEmpty()) {
+            shapeList.setSelectedIndex(0);
         }
-        list.ensureIndexIsVisible(list.getSelectedIndex());
+        shapeList.ensureIndexIsVisible(shapeList.getSelectedIndex());
     }
 
     @Override
