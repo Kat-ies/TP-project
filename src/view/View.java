@@ -4,6 +4,7 @@ import controller.ControllerInterface;
 import model.ObservableModel;
 import shape.Rectangle;
 import shape.Shape;
+import shape.ShapeException;
 import shape.ShapeType;
 
 import javax.swing.*;
@@ -33,9 +34,13 @@ public class View implements Observer {
         this.controller = controller;
     }
 
-    static Random random = new Random();
+    static Random random = new Random(); // TODO : remove random
 
-    public Shape buildShape(ShapeType shapeType) {
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(frame, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public Shape buildShape() throws ShapeException {
         // TODO
         return new Rectangle(new Point(random.nextInt(300), random.nextInt(300)),
                              new Point(random.nextInt(300), random.nextInt(300)),
@@ -46,7 +51,7 @@ public class View implements Observer {
 
     public Point askMovePoint(Point oldPoint) {
         // TODO
-        return new Point(0, 0);
+        return new Point(random.nextInt(300), random.nextInt(300));
     }
 
     private void createControls() {
@@ -73,8 +78,7 @@ public class View implements Observer {
         removeButton = new JButton("Remove");
         moveButton = new JButton("Move...");
 
-        // TODO : create figures of ANY type
-        createButton.addActionListener(actionEvent -> controller.createClicked(ShapeType.RECTANGLE));
+        createButton.addActionListener(actionEvent -> controller.createClicked());
         removeButton.addActionListener(actionEvent -> controller.removeClicked(list.getSelectedValue()));
         moveButton.addActionListener(actionEvent -> controller.moveClicked(list.getSelectedValue()));
 

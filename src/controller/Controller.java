@@ -1,7 +1,7 @@
 package controller;
 
 import model.ObservableModel;
-import shape.ShapeType;
+import shape.ShapeException;
 import view.View;
 
 public class Controller implements ControllerInterface {
@@ -19,8 +19,12 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public void createClicked(ShapeType type) {
-        model.addShape(view.buildShape(type));
+    public void createClicked() {
+        try {
+            model.addShape(view.buildShape());
+        } catch (ShapeException e) {
+            view.showError("Cannot create shape: " + e.getMessage());
+        }
     }
 
     @Override
