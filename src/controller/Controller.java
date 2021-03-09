@@ -4,7 +4,6 @@ import model.ObservableModel;
 import shape.Shape;
 import shape.ShapeException;
 import view.DataValidateException;
-import view.PointFormatException;
 import view.View;
 import utils.Point;
 
