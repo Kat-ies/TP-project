@@ -41,7 +41,7 @@ public class PointPickerDialog extends JDialog {
     public Point choosePoint(Point old) throws DataValidateException {
         setupDialog(old);
         pack();
-        setVisible(true);
+        setVisible(true);  // Blocks until the user chooses a point
         return getMovePoint();
     }
 

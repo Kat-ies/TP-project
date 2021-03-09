@@ -91,7 +91,7 @@ public class ShapeBuildDialog extends JDialog {
 
     public Shape chooseShape() throws ModelException, DataValidateException {
         isSuccess = false;
-        setVisible(true);
+        setVisible(true);  // Blocks until the user chooses a shape
         return isSuccess ? activePanel.getShape() : null;
     }
 }
