@@ -36,7 +36,7 @@ public class Model implements ObservableModel {
     }
 
     @Override
-    public void drawShape(String name, Graphics graphics) {
+    public void drawShape(String name, Graphics2D graphics) {
         shapes.get(name).draw(graphics);
     }
 

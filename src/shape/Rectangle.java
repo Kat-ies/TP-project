@@ -9,21 +9,9 @@ public class Rectangle extends Shape {
 
     private Point bottomRightCorner;
     private Point topLeftCorner;
+
     public Rectangle() {
 
-    }
-
-    public Rectangle(Point topLeftCorner, Point bottomRightCorner) {
-        this.bottomRightCorner = bottomRightCorner;
-        this.topLeftCorner = topLeftCorner;
-    }
-
-
-    public Rectangle(Point topLeftCorner, Point bottomRightCorner, int frameWidth, Color frameColor,
-                     Color fillColor) {
-        super(frameWidth, frameColor, fillColor);
-        this.bottomRightCorner = bottomRightCorner;
-        this.topLeftCorner = topLeftCorner;
     }
 
     @Override
@@ -38,10 +26,21 @@ public class Rectangle extends Shape {
             topLeftCorner.y = bottomRightCorner.y;
             bottomRightCorner.y = tmp;
         }
+
+        if (topLeftCorner.x < 0 || topLeftCorner.y < 0) {
+            throw new ModelException("Invalid top left coordinate!");
+        }
+
+        if (bottomRightCorner.x < 0 || bottomRightCorner.y < 0) {
+            throw new ModelException("Invalid bottom right coordinate!");
+        }
+
+
     }
 
     @Override
-    public void draw(Graphics graphics) {
+    public void draw(Graphics2D graphics) {
+        graphics.setStroke(super.getFrameWidth());
         graphics.setColor(super.getFillColor());
         graphics.fillRect(this.topLeftCorner.x, this.topLeftCorner.y,
                 this.bottomRightCorner.x - this.topLeftCorner.x,
@@ -61,21 +60,24 @@ public class Rectangle extends Shape {
         return this.topLeftCorner;
     }
 
-    public void setBottomRightCorner(Point point) { this.bottomRightCorner = point; }
+    public void setBottomRightCorner(Point point) {
+        this.bottomRightCorner = point;
+    }
 
-    public void setTopLeftCorner(Point point) { this.topLeftCorner = point; }
+    public void setTopLeftCorner(Point point) {
+        this.topLeftCorner = point;
+    }
 
     @Override
     public Point location() {
         Point center = new Point();
-        center.x = (this.bottomRightCorner.x + this.topLeftCorner.x)/2;
-        center.y = (this.bottomRightCorner.y + this.topLeftCorner.y)/2;
+        center.x = (this.bottomRightCorner.x + this.topLeftCorner.x) / 2;
+        center.y = (this.bottomRightCorner.y + this.topLeftCorner.y) / 2;
         return center;
     }
 
     @Override
     public void move(Point point) {
-        //we set new center point position
         Point center = location();
         int deltaX = Math.abs(this.bottomRightCorner.x - center.x);
         int deltaY = Math.abs(this.bottomRightCorner.y - center.y);
@@ -83,5 +85,4 @@ public class Rectangle extends Shape {
         this.topLeftCorner = new Point(point.x - deltaX, point.y - deltaY);
         this.bottomRightCorner = new Point(point.x + deltaX, point.y + deltaY);
     }
-
 }

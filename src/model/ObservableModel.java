@@ -13,7 +13,7 @@ public interface ObservableModel {
 
     public void removeShape(String name);
 
-    public void drawShape(String name, Graphics graphics);
+    public void drawShape(String name, Graphics2D graphics);
 
     public List<String> getShapeNames();
 

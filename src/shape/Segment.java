@@ -13,12 +13,6 @@ public class Segment extends Shape {
 
     }
 
-    public Segment(Point startPoint, Point endPoint, int frameWidth, Color frameColor) {
-        super(frameWidth, frameColor);
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-    }
-
     public Point getStartPoint() { return startPoint; }
 
     public void setStartPoint(Point startPoint) { this.startPoint = startPoint; }
@@ -28,17 +22,16 @@ public class Segment extends Shape {
     public void setEndPoint(Point endPoint) { this.endPoint = endPoint; }
 
     @Override
-    public void draw(Graphics graphics) {
+    public void draw(Graphics2D graphics) {
         graphics.setColor(super.getFrameColor());
+        graphics.setStroke(super.getFrameWidth());
         graphics.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
     }
 
     @Override
     public Point location() {
-        Point center = new Point();
-        center.x = (this.startPoint.x + this.endPoint.x)/2;
-        center.y = (this.startPoint.y + this.endPoint.y)/2;
-        return center;
+        return new Point((this.startPoint.x + this.endPoint.x)/2,
+                (this.startPoint.y + this.endPoint.y)/2);
     }
 
     @Override

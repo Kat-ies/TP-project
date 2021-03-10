@@ -27,8 +27,7 @@ public class DiamondBuildPanel extends ShapeBuildPanel {
     protected void setupShape(Shape shape) throws DataValidateException {
         super.setupShape(shape);
         Diamond diamond = (Diamond)shape;
-        diamond.setTopPoint(topPointChooser.getPoint());
-        diamond.setRightPoint(rightPointChooser.getPoint());
+        diamond.setPoints(topPointChooser.getPoint(), rightPointChooser.getPoint());
     }
 
     @Override

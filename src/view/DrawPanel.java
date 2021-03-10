@@ -15,6 +15,6 @@ class DrawPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         g.clearRect(0, 0, getWidth(), getHeight());
-        model.getShapeNames().stream().sorted().forEach(name -> model.drawShape(name, g));
+        model.getShapeNames().stream().sorted().forEach(name -> model.drawShape(name, (Graphics2D) g));
     }
 }

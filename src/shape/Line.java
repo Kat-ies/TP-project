@@ -6,23 +6,21 @@ import java.awt.*;
 
 public class Line extends Ray {
 
-
     public Line() {
 
     }
 
-    public Line(Point startPoint, Point endPoint, int frameWidth, Color frameColor) {
-        super(startPoint, endPoint, frameWidth, frameColor);
+    private void swapPoints() {
+        Point tmp = getStartPoint();
+        setStartPoint(getEndPoint());
+        setEndPoint(tmp);
     }
 
-
     @Override
-    public void draw(Graphics graphics) {
-        graphics.setColor(super.getFrameColor());
+    public void draw(Graphics2D graphics) {
         super.draw(graphics);
-        Point theCenter = location();
-        Point endPoint = getEndPoint();
-        setEndPoint(new Point(2*theCenter.x-endPoint.x, 2*theCenter.y-endPoint.y));
+        swapPoints();
         super.draw(graphics);
+        swapPoints();
     }
 }

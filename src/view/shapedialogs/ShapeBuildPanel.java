@@ -50,6 +50,7 @@ public abstract class ShapeBuildPanel extends JPanel {
 
         frameWidthChooser = new JSpinner();
         frameWidthChooser.setModel(new SpinnerNumberModel(1, 1, 20, 1));
+        frameWidthChooser.setValue(5);
         addField("Frame width:", frameWidthChooser);
     }
 

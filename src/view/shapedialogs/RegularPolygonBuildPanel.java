@@ -40,6 +40,12 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
         } catch (NumberFormatException e) {
             throw new DataValidateException(e.getMessage());
         }
+
+        try {
+            poly.setPolygonPoints(poly.getCenter(),poly.getRadius(), poly.getSidesNumber());
+        } catch (NumberFormatException e) {
+            throw new DataValidateException(e.getMessage());
+        }
     }
 
     @Override
@@ -53,10 +59,10 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
         radiusChooser = new JTextField("40");
         radiusChooser.setColumns(7);
         radiusChooser.setInputVerifier(new IntegerVerifier());
-        addField("Point on bounding circle:", radiusChooser);
+        addField("Radius:", radiusChooser);
 
         numberOfSidesChooser = new JSpinner();
         numberOfSidesChooser.setModel(new SpinnerNumberModel(5, 1, 100, 1));
-        addField("Radius: ", numberOfSidesChooser);
+        addField("Point on bounding circle: ", numberOfSidesChooser);
     }
 }

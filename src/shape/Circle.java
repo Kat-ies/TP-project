@@ -3,24 +3,43 @@ package shape;
 import model.ModelException;
 import utils.Point;
 
-import java.awt.*;
-
 public class Circle extends Ellipse {
+
+    int radius;
 
     public Circle() {
 
     }
 
-    public Circle(Point topLeftCorner, Point bottomRightCorner,
-                  int frameWidth, Color frameColor, Color fillColor) {
-        super(topLeftCorner, bottomRightCorner, frameWidth, frameColor, fillColor);
+    public int getRadius() {
+        return radius;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
+    public void setRadius(Point topLeftCorner, Point bottomRightCorner) {
+        this.radius = (int)Math.sqrt(Math.pow(topLeftCorner.x - bottomRightCorner.x,2) -
+                Math.pow(topLeftCorner.y - bottomRightCorner.y,2));
+    }
+
+    @Override
+    public Point location() {
+        return getTopLeftCorner();
     }
 
     public void validate() throws ModelException {
-        int radius = Math.min(getBottomRightCorner().x - getTopLeftCorner().x,
-                              getBottomRightCorner().y - getTopLeftCorner().y) / 2;
-        Point center = location();
-        setTopLeftCorner(new Point(center.x - radius, center.y - radius));
-        setBottomRightCorner(new Point(center.x + radius, center.y + radius));
+        if (radius < 0){
+            throw new ModelException("Invalid radius!");
+        }
+        if(getTopLeftCorner().x <0 || getTopLeftCorner().y < 0){
+            throw new ModelException("Invalid center point!");
+        }
+        if(getBottomRightCorner().x <0 || getBottomRightCorner().y < 0){
+            throw new ModelException("Invalid circle point!");
+        }
+
+        setBottomRightCorner(new Point(getTopLeftCorner().x + radius, getTopLeftCorner().y + radius));
     }
 }
