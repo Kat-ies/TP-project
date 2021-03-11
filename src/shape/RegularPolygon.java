@@ -37,8 +37,12 @@ public class RegularPolygon extends Polygon {
         this.sidesNumber = sidesNumber;
     }
 
-    public void setPolygonPoints(Point center, double radius, int sidesNumber) {
-        ArrayList<Point> points = new ArrayList<Point>(sidesNumber + 1);
+    public void setPolygonPoints(Point center, int radius, int sidesNumber) {
+        setRadius(radius);
+        setCenter(center);
+        setSidesNumber(sidesNumber);
+
+        ArrayList<Point> points = new ArrayList<>(sidesNumber + 1);
         double z;
         double angle = 360.0 / sidesNumber;
 

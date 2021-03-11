@@ -24,26 +24,15 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
     protected void setupShape(Shape shape) throws DataValidateException {
         super.setupShape(shape);
         RegularPolygon poly = (RegularPolygon)shape;
-        poly.setCenter(centerChooser.getPoint());
+        Point center = centerChooser.getPoint();
 
         try {
             numberOfSidesChooser.commitEdit();
             Number numSides = (Number)numberOfSidesChooser.getValue();
-            poly.setSidesNumber(numSides.intValue());
-        } catch (ParseException e) {
-            throw new DataValidateException(e.getMessage());
-        }
-
-        try {
             int radius = Integer.parseInt(radiusChooser.getText());
-            poly.setRadius(radius);
-        } catch (NumberFormatException e) {
-            throw new DataValidateException(e.getMessage());
-        }
 
-        try {
-            poly.setPolygonPoints(poly.getCenter(),poly.getRadius(), poly.getSidesNumber());
-        } catch (NumberFormatException e) {
+            poly.setPolygonPoints(center, radius, numSides.intValue());
+        } catch (ParseException e) {
             throw new DataValidateException(e.getMessage());
         }
     }
