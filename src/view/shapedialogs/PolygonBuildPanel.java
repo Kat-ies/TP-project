@@ -8,6 +8,7 @@ import view.PointPickerDialog;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class PolygonBuildPanel extends ShapeBuildPanel {
@@ -34,6 +35,7 @@ public class PolygonBuildPanel extends ShapeBuildPanel {
         points.remove(pointList.getSelectedValue());
         pointList.updateUI();
         pointList.setSelectedIndex(0);
+        updateButtons();
     }
 
     private void updateButtons() {
@@ -70,28 +72,31 @@ public class PolygonBuildPanel extends ShapeBuildPanel {
         pointList.addListSelectionListener(listSelectionEvent -> updateButtons());
         pointListContainer.add(pointList, BorderLayout.CENTER);
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setViewportView(pointList);
-        pointListContainer.add(scrollPane);
-
-        resetPointList();
-        updateButtons();
-    }
-
-    private void resetPointList() {
         points = new Vector<>();
         points.add(new Point(1, 1));
         points.add(new Point(1, 50));
         points.add(new Point(50, 50));
         pointList.setListData(points);
+
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setViewportView(pointList);
+        pointListContainer.add(scrollPane);
+
+        updateButtons();
     }
 
     @Override
     protected void setupShape(Shape shape) throws DataValidateException {
         super.setupShape(shape);
         Polygon poly = (Polygon)shape;
-        poly.setPoints(points);
-        resetPointList();
+
+        // This is a sort of a hack to copy the list of points into polygon
+        ArrayList<Point> pointsToPoly = new ArrayList<>();
+        for (Point point : points) {
+            pointsToPoly.add(new Point(point.x, point.y));
+        }
+
+        poly.setPoints(pointsToPoly);
     }
 
     @Override
