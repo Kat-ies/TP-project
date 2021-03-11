@@ -55,6 +55,6 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
 
         numberOfSidesChooser = new JSpinner();
         numberOfSidesChooser.setModel(new SpinnerNumberModel(5, 1, 100, 1));
-        addField("Point on bounding circle: ", numberOfSidesChooser);
+        addField("Number of sides: ", numberOfSidesChooser);
     }
 }
