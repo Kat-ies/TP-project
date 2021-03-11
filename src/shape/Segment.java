@@ -1,5 +1,6 @@
 package shape;
 
+import model.ModelException;
 import utils.Point;
 
 import java.awt.*;
@@ -13,13 +14,21 @@ public class Segment extends Shape {
 
     }
 
-    public Point getStartPoint() { return startPoint; }
+    public Point getStartPoint() {
+        return startPoint;
+    }
 
-    public void setStartPoint(Point startPoint) { this.startPoint = startPoint; }
+    public void setStartPoint(Point startPoint) {
+        this.startPoint = startPoint;
+    }
 
-    public Point getEndPoint() { return endPoint; }
+    public Point getEndPoint() {
+        return endPoint;
+    }
 
-    public void setEndPoint(Point endPoint) { this.endPoint = endPoint; }
+    public void setEndPoint(Point endPoint) {
+        this.endPoint = endPoint;
+    }
 
     @Override
     public void draw(Graphics2D graphics) {
@@ -30,8 +39,8 @@ public class Segment extends Shape {
 
     @Override
     public Point location() {
-        return new Point((this.startPoint.x + this.endPoint.x)/2,
-                (this.startPoint.y + this.endPoint.y)/2);
+        return new Point((this.startPoint.x + this.endPoint.x) / 2,
+                (this.startPoint.y + this.endPoint.y) / 2);
     }
 
     @Override
@@ -42,5 +51,17 @@ public class Segment extends Shape {
 
         this.startPoint = new Point(point.x - deltaX, point.y - deltaY);
         this.endPoint = new Point(point.x + deltaX, point.y + deltaY);
+    }
+
+    @Override
+    public void validate() throws ModelException {
+        if (getEndPoint().x == getStartPoint().x && getEndPoint().y == getStartPoint().y) {
+            throw new ModelException("Invalid points!");
+        }
+
+        if (getEndPoint().x < 0 || getEndPoint().y < 0 ||
+                getStartPoint().x < 0 || getStartPoint().y < 0) {
+            throw new ModelException("Invalid coordinates!");
+        }
     }
 }
