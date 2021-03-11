@@ -35,6 +35,9 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
         } catch (ParseException e) {
             throw new DataValidateException(e.getMessage());
         }
+        catch (NumberFormatException e) {
+            throw new DataValidateException(e.getMessage());
+        }
     }
 
     @Override
