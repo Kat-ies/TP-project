@@ -23,9 +23,9 @@ public class Polygon extends Shape {
         this.points = points;
     }
 
-    public void setPoints(int[] xPoints, int[] yPoints){
+    public void setPoints(int[] xPoints, int[] yPoints) {
         List<Point> points = new Vector<>();
-        for (int i=0; i<xPoints.length; i++){
+        for (int i = 0; i < xPoints.length; i++) {
             points.add(new Point(xPoints[i], yPoints[i]));
         }
         setPoints(points);

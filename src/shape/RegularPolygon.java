@@ -41,6 +41,12 @@ public class RegularPolygon extends Polygon {
         super.setPoints(points);
     }
 
+    @Override
+    public void move(Point point) {
+        super.move(point);
+        setCenter(point);
+    }
+
 
     @Override
     public Point location() {
