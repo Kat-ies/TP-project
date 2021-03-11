@@ -2,7 +2,6 @@ package shape;
 
 import model.ModelException;
 import utils.Point;
-
 import java.awt.*;
 
 public abstract class Shape {
@@ -36,7 +35,7 @@ public abstract class Shape {
 
     public void setFrameColor(Color frameColor) { this.frameColor = frameColor; }
 
-    public int getFrameWidth() { return frameWidth; }
+    public Stroke getFrameWidth() { return new BasicStroke(frameWidth); }
 
     public void setFrameWidth(int frameWidth) { this.frameWidth = frameWidth; }
 
@@ -44,7 +43,7 @@ public abstract class Shape {
 
     public void setFillColor(Color fillColor) { this.fillColor = fillColor; }
 
-    public abstract void draw(Graphics graphics);
+    public abstract void draw(Graphics2D graphics);
 
     public abstract Point location();
 

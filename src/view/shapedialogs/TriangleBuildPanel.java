@@ -33,9 +33,8 @@ public class TriangleBuildPanel extends ShapeBuildPanel {
     protected void setupShape(Shape shape) throws DataValidateException {
         super.setupShape(shape);
         Triangle triangle = (Triangle)shape;
-        triangle.setAPoint(firstPointChooser.getPoint());
-        triangle.setBPoint(secondPointChooser.getPoint());
-        triangle.setCPoint(thirdPointChooser.getPoint());
+        triangle.setPoints(firstPointChooser.getPoint(), secondPointChooser.getPoint(),
+                thirdPointChooser.getPoint());
     }
 
     @Override

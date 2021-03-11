@@ -24,20 +24,18 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
     protected void setupShape(Shape shape) throws DataValidateException {
         super.setupShape(shape);
         RegularPolygon poly = (RegularPolygon)shape;
-        poly.setCenter(centerChooser.getPoint());
+        Point center = centerChooser.getPoint();
 
         try {
             numberOfSidesChooser.commitEdit();
             Number numSides = (Number)numberOfSidesChooser.getValue();
-            poly.setSidesNumber(numSides.intValue());
+            int radius = Integer.parseInt(radiusChooser.getText());
+
+            poly.setPolygonPoints(center, radius, numSides.intValue());
         } catch (ParseException e) {
             throw new DataValidateException(e.getMessage());
         }
-
-        try {
-            int radius = Integer.parseInt(radiusChooser.getText());
-            poly.setRadius(radius);
-        } catch (NumberFormatException e) {
+        catch (NumberFormatException e) {
             throw new DataValidateException(e.getMessage());
         }
     }
@@ -53,10 +51,10 @@ public class RegularPolygonBuildPanel extends ShapeBuildPanel {
         radiusChooser = new JTextField("40");
         radiusChooser.setColumns(7);
         radiusChooser.setInputVerifier(new IntegerVerifier());
-        addField("Point on bounding circle:", radiusChooser);
+        addField("Radius:", radiusChooser);
 
         numberOfSidesChooser = new JSpinner();
         numberOfSidesChooser.setModel(new SpinnerNumberModel(5, 1, 100, 1));
-        addField("Radius: ", numberOfSidesChooser);
+        addField("Point on bounding circle: ", numberOfSidesChooser);
     }
 }

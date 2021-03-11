@@ -1,13 +1,12 @@
 package view.shapedialogs;
 
 import model.ModelException;
+import shape.Shape;
 import view.DataValidateException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
-import shape.Shape;
 
 public class ShapeBuildDialog extends JDialog {
     private boolean isSuccess = false;

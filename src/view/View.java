@@ -1,17 +1,15 @@
 package view;
 
 import controller.ControllerInterface;
+import model.ModelException;
 import model.ObservableModel;
 import shape.Shape;
-import model.ModelException;
+import utils.Point;
+import view.shapedialogs.ShapeBuildDialog;
 
 import javax.swing.*;
 import java.awt.*;
-
 import java.util.Vector;
-
-import utils.Point;
-import view.shapedialogs.ShapeBuildDialog;
 
 public class View implements Observer {
     private ControllerInterface controller;

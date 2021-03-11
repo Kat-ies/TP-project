@@ -1,7 +1,5 @@
 package shape;
 
-import utils.Point;
-
 import java.awt.*;
 
 public class Ellipse extends Rectangle {
@@ -10,13 +8,9 @@ public class Ellipse extends Rectangle {
 
     }
 
-    public Ellipse(Point topLeftCorner, Point bottomRightCorner,
-                   int frameWidth, Color frameColor, Color fillColor) {
-        super(topLeftCorner, bottomRightCorner, frameWidth, frameColor, fillColor);
-    }
-
     @Override
-    public void draw(Graphics graphics) {
+    public void draw(Graphics2D graphics) {
+        graphics.setStroke(super.getFrameWidth());
         graphics.setColor(super.getFrameColor());
         graphics.drawOval(this.getTopLeftCorner().x, this.getTopLeftCorner().y,
                 this.getBottomRightCorner().x - this.getTopLeftCorner().x,
