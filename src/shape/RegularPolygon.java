@@ -7,8 +7,7 @@ import java.util.ArrayList;
 public class RegularPolygon extends Polygon {
 
     private Point center;
-    private int radius;
-    private int sidesNumber;
+
 
     public RegularPolygon() {
     }
@@ -21,26 +20,8 @@ public class RegularPolygon extends Polygon {
         this.center = center;
     }
 
-    public int getRadius() {
-        return radius;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
-    }
-
-    public int getSidesNumber() {
-        return sidesNumber;
-    }
-
-    public void setSidesNumber(int sidesNumber) {
-        this.sidesNumber = sidesNumber;
-    }
-
     public void setPolygonPoints(Point center, int radius, int sidesNumber) {
-        setRadius(radius);
         setCenter(center);
-        setSidesNumber(sidesNumber);
 
         ArrayList<Point> points = new ArrayList<>(sidesNumber + 1);
         double z;
