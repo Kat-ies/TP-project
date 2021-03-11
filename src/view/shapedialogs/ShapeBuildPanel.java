@@ -49,8 +49,7 @@ public abstract class ShapeBuildPanel extends JPanel {
         addField("Border color:", frameColorChooser);
 
         frameWidthChooser = new JSpinner();
-        frameWidthChooser.setModel(new SpinnerNumberModel(1, 1, 20, 1));
-        frameWidthChooser.setValue(5);
+        frameWidthChooser.setModel(new SpinnerNumberModel(5, 1, 20, 1));
         addField("Frame width:", frameWidthChooser);
     }
 
