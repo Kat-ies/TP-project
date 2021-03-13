@@ -18,7 +18,7 @@ public class Ray extends Segment {
         return endPoint;
     }
 
-    public Point getOutScreenPoint(Point point) {
+    private Point getOutScreenPoint(Point point) {
         Point center = new Point();
         center.x = (point.x + super.getStartPoint().x) / 2;
         center.y = (point.y + super.getStartPoint().y) / 2;
